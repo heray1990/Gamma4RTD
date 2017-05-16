@@ -41,7 +41,14 @@ namespace Gamma4RTD
 
         private void buttonRTDWrite_Click(object sender, EventArgs e)
         {
-            DccCiWriteGamma(2.2, 3.454, 4);
+            if (DccCiWriteGamma(2.2, 3.454, 4))
+            {
+                MessageBox.Show("True");
+            }
+            else
+            {
+                MessageBox.Show("False");
+            }
         }
 
         private bool DccCiWriteGamma(double gamma, double gammaMapping, byte gammaid)
@@ -51,6 +58,7 @@ namespace Gamma4RTD
             int[] inputArray = new int[1024];
             double tmp = 0;
             int i = 0;
+            bool result = false;
 
             gammaArrayTmp[0] = 0x00;
             gammaArrayTmp[1] = 0x00;
@@ -91,7 +99,10 @@ namespace Gamma4RTD
             //    textBox1.Text = textBox1.Text + gammaArray[i].ToString() + ", ";
             //}
 
-            return true;
+            result = Rtddll.DDCCI_WriteGamma(ref gammaArray[0], gammaid);
+            Application.DoEvents();
+
+            return result;
         }
     }
 }
