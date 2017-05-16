@@ -38,5 +38,37 @@ namespace Gamma4RTD
         {
             comboBoxGamId.SelectedIndex = 0;
         }
+
+        private void buttonRTDWrite_Click(object sender, EventArgs e)
+        {
+            DccCiWriteGamma(2.2, 3.454, 4);
+        }
+
+        private bool DccCiWriteGamma(double gamma, double gammaMapping, byte gammaid)
+        {
+            byte[] gammaArray = new byte[6156];
+            byte[] gammaArrayTmp = new byte[2052];
+            int[] inputArray = new int[1024];
+            double tmp = 0;
+            int i = 0;
+
+            gammaArrayTmp[0] = 0x00;
+            gammaArrayTmp[1] = 0x00;
+            gammaArrayTmp[2050] = 0x00;
+            gammaArrayTmp[2051] = 0x00;
+
+            for (i = 1; i <= 1024; i++)
+            {
+                // 16383 = 0x3F
+                tmp = 16383 * Math.Pow(((double)i / 1024.0), (gamma / gammaMapping));
+                inputArray[i - 1] = (int)tmp;
+            }
+
+            for (i = 0; i < 1024; i++)
+            {
+                textBox1.Text = textBox1.Text + inputArray[i].ToString() + ", ";
+            }
+            return true;
+        }
     }
 }

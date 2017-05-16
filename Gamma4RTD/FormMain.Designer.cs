@@ -33,11 +33,14 @@
             this.buttonRTDRst = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxGamId = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonRTDWrite = new System.Windows.Forms.Button();
             this.FrameRTDAct.SuspendLayout();
             this.SuspendLayout();
             // 
             // FrameRTDAct
             // 
+            this.FrameRTDAct.Controls.Add(this.buttonRTDWrite);
             this.FrameRTDAct.Controls.Add(this.comboBoxGamId);
             this.FrameRTDAct.Controls.Add(this.label1);
             this.FrameRTDAct.Controls.Add(this.buttonRTDRst);
@@ -101,11 +104,31 @@
             this.comboBoxGamId.Size = new System.Drawing.Size(79, 20);
             this.comboBoxGamId.TabIndex = 3;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(12, 137);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(260, 113);
+            this.textBox1.TabIndex = 1;
+            // 
+            // buttonRTDWrite
+            // 
+            this.buttonRTDWrite.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonRTDWrite.Location = new System.Drawing.Point(8, 86);
+            this.buttonRTDWrite.Name = "buttonRTDWrite";
+            this.buttonRTDWrite.Size = new System.Drawing.Size(75, 23);
+            this.buttonRTDWrite.TabIndex = 4;
+            this.buttonRTDWrite.Text = "Write";
+            this.buttonRTDWrite.UseVisualStyleBackColor = true;
+            this.buttonRTDWrite.Click += new System.EventHandler(this.buttonRTDWrite_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.FrameRTDAct);
             this.Name = "FormMain";
             this.Text = "Form1";
@@ -113,6 +136,7 @@
             this.FrameRTDAct.ResumeLayout(false);
             this.FrameRTDAct.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -123,6 +147,8 @@
         private System.Windows.Forms.Button buttonRTDRst;
         private System.Windows.Forms.ComboBox comboBoxGamId;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button buttonRTDWrite;
     }
 }
 
