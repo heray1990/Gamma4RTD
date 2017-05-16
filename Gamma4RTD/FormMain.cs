@@ -64,10 +64,33 @@ namespace Gamma4RTD
                 inputArray[i - 1] = (int)tmp;
             }
 
-            for (i = 0; i < 1024; i++)
+            for (i = 2; i <= 2048; i = i + 2)
             {
-                textBox1.Text = textBox1.Text + inputArray[i].ToString() + ", ";
+                gammaArrayTmp[i] = (byte)(inputArray[i / 2 - 1] / 256);
+                gammaArrayTmp[i + 1] = (byte)(inputArray[i / 2 - 1] % 256);
             }
+
+            for (i = 0; i < 6156; i++)
+            {
+                if (i <= 2051)
+                {
+                    gammaArray[i] = gammaArrayTmp[i];
+                }
+                else if (i >= 4104)
+                {
+                    gammaArray[i] = gammaArrayTmp[i - 4104];
+                }
+                else
+                {
+                    gammaArray[i] = gammaArrayTmp[i - 2052];
+                }
+            }
+
+            //for (i = 0; i < 6156; i++)
+            //{
+            //    textBox1.Text = textBox1.Text + gammaArray[i].ToString() + ", ";
+            //}
+
             return true;
         }
     }
