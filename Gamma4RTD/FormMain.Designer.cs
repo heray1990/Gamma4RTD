@@ -29,17 +29,19 @@
         private void InitializeComponent()
         {
             this.FrameRTDAct = new System.Windows.Forms.GroupBox();
-            this.buttonRTDInit = new System.Windows.Forms.Button();
-            this.buttonRTDRst = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBoxGamId = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonRTDWrite = new System.Windows.Forms.Button();
+            this.comboBoxGamId = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonRTDRst = new System.Windows.Forms.Button();
+            this.buttonRTDInit = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonRTDErase = new System.Windows.Forms.Button();
             this.FrameRTDAct.SuspendLayout();
             this.SuspendLayout();
             // 
             // FrameRTDAct
             // 
+            this.FrameRTDAct.Controls.Add(this.buttonRTDErase);
             this.FrameRTDAct.Controls.Add(this.buttonRTDWrite);
             this.FrameRTDAct.Controls.Add(this.comboBoxGamId);
             this.FrameRTDAct.Controls.Add(this.label1);
@@ -53,37 +55,16 @@
             this.FrameRTDAct.TabStop = false;
             this.FrameRTDAct.Text = "RTD Action";
             // 
-            // buttonRTDInit
+            // buttonRTDWrite
             // 
-            this.buttonRTDInit.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonRTDInit.Location = new System.Drawing.Point(6, 20);
-            this.buttonRTDInit.Name = "buttonRTDInit";
-            this.buttonRTDInit.Size = new System.Drawing.Size(75, 23);
-            this.buttonRTDInit.TabIndex = 0;
-            this.buttonRTDInit.Text = "Init";
-            this.buttonRTDInit.UseVisualStyleBackColor = true;
-            this.buttonRTDInit.Click += new System.EventHandler(this.buttonRTDInit_Click);
-            // 
-            // buttonRTDRst
-            // 
-            this.buttonRTDRst.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonRTDRst.Location = new System.Drawing.Point(93, 20);
-            this.buttonRTDRst.Name = "buttonRTDRst";
-            this.buttonRTDRst.Size = new System.Drawing.Size(75, 23);
-            this.buttonRTDRst.TabIndex = 1;
-            this.buttonRTDRst.Text = "Reset";
-            this.buttonRTDRst.UseVisualStyleBackColor = true;
-            this.buttonRTDRst.Click += new System.EventHandler(this.buttonRTDRst_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(6, 58);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 12);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Gamma Table:";
+            this.buttonRTDWrite.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonRTDWrite.Location = new System.Drawing.Point(8, 86);
+            this.buttonRTDWrite.Name = "buttonRTDWrite";
+            this.buttonRTDWrite.Size = new System.Drawing.Size(75, 23);
+            this.buttonRTDWrite.TabIndex = 4;
+            this.buttonRTDWrite.Text = "Write";
+            this.buttonRTDWrite.UseVisualStyleBackColor = true;
+            this.buttonRTDWrite.Click += new System.EventHandler(this.buttonRTDWrite_Click);
             // 
             // comboBoxGamId
             // 
@@ -104,6 +85,38 @@
             this.comboBoxGamId.Size = new System.Drawing.Size(79, 20);
             this.comboBoxGamId.TabIndex = 3;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(6, 58);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 12);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Gamma Table:";
+            // 
+            // buttonRTDRst
+            // 
+            this.buttonRTDRst.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonRTDRst.Location = new System.Drawing.Point(93, 20);
+            this.buttonRTDRst.Name = "buttonRTDRst";
+            this.buttonRTDRst.Size = new System.Drawing.Size(75, 23);
+            this.buttonRTDRst.TabIndex = 1;
+            this.buttonRTDRst.Text = "Reset";
+            this.buttonRTDRst.UseVisualStyleBackColor = true;
+            this.buttonRTDRst.Click += new System.EventHandler(this.buttonRTDRst_Click);
+            // 
+            // buttonRTDInit
+            // 
+            this.buttonRTDInit.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonRTDInit.Location = new System.Drawing.Point(6, 20);
+            this.buttonRTDInit.Name = "buttonRTDInit";
+            this.buttonRTDInit.Size = new System.Drawing.Size(75, 23);
+            this.buttonRTDInit.TabIndex = 0;
+            this.buttonRTDInit.Text = "Init";
+            this.buttonRTDInit.UseVisualStyleBackColor = true;
+            this.buttonRTDInit.Click += new System.EventHandler(this.buttonRTDInit_Click);
+            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(12, 137);
@@ -112,16 +125,16 @@
             this.textBox1.Size = new System.Drawing.Size(260, 113);
             this.textBox1.TabIndex = 1;
             // 
-            // buttonRTDWrite
+            // buttonRTDErase
             // 
-            this.buttonRTDWrite.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonRTDWrite.Location = new System.Drawing.Point(8, 86);
-            this.buttonRTDWrite.Name = "buttonRTDWrite";
-            this.buttonRTDWrite.Size = new System.Drawing.Size(75, 23);
-            this.buttonRTDWrite.TabIndex = 4;
-            this.buttonRTDWrite.Text = "Write";
-            this.buttonRTDWrite.UseVisualStyleBackColor = true;
-            this.buttonRTDWrite.Click += new System.EventHandler(this.buttonRTDWrite_Click);
+            this.buttonRTDErase.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonRTDErase.Location = new System.Drawing.Point(93, 86);
+            this.buttonRTDErase.Name = "buttonRTDErase";
+            this.buttonRTDErase.Size = new System.Drawing.Size(75, 23);
+            this.buttonRTDErase.TabIndex = 5;
+            this.buttonRTDErase.Text = "Erase";
+            this.buttonRTDErase.UseVisualStyleBackColor = true;
+            this.buttonRTDErase.Click += new System.EventHandler(this.buttonRTDErase_Click);
             // 
             // FormMain
             // 
@@ -149,6 +162,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button buttonRTDWrite;
+        private System.Windows.Forms.Button buttonRTDErase;
     }
 }
 

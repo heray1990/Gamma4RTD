@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Gamma4RTD
 {
@@ -41,13 +42,16 @@ namespace Gamma4RTD
 
         private void buttonRTDWrite_Click(object sender, EventArgs e)
         {
-            if (DccCiWriteGamma(2.2, 3.454, 4))
+            new Thread(new ThreadStart(StartWriteGamma)).Start();
+        }
+
+        public void StartWriteGamma()
+        {
+            bool isDone = false;
+            isDone = DccCiWriteGamma(2.2, 3.454, 5);
+            if (isDone)
             {
                 MessageBox.Show("True");
-            }
-            else
-            {
-                MessageBox.Show("False");
             }
         }
 
@@ -103,6 +107,11 @@ namespace Gamma4RTD
             Application.DoEvents();
 
             return result;
+        }
+
+        private void buttonRTDErase_Click(object sender, EventArgs e)
+        {
+            Rtddll.DDCCI_EraseGamma(4);
         }
     }
 }
