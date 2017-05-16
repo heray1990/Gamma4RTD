@@ -29,18 +29,20 @@
         private void InitializeComponent()
         {
             this.FrameRTDAct = new System.Windows.Forms.GroupBox();
+            this.buttonRTDErase = new System.Windows.Forms.Button();
             this.buttonRTDWrite = new System.Windows.Forms.Button();
             this.comboBoxGamId = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonRTDRst = new System.Windows.Forms.Button();
             this.buttonRTDInit = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.buttonRTDErase = new System.Windows.Forms.Button();
+            this.progressBarWrite = new System.Windows.Forms.ProgressBar();
             this.FrameRTDAct.SuspendLayout();
             this.SuspendLayout();
             // 
             // FrameRTDAct
             // 
+            this.FrameRTDAct.Controls.Add(this.progressBarWrite);
             this.FrameRTDAct.Controls.Add(this.buttonRTDErase);
             this.FrameRTDAct.Controls.Add(this.buttonRTDWrite);
             this.FrameRTDAct.Controls.Add(this.comboBoxGamId);
@@ -50,10 +52,21 @@
             this.FrameRTDAct.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FrameRTDAct.Location = new System.Drawing.Point(0, 0);
             this.FrameRTDAct.Name = "FrameRTDAct";
-            this.FrameRTDAct.Size = new System.Drawing.Size(226, 131);
+            this.FrameRTDAct.Size = new System.Drawing.Size(176, 164);
             this.FrameRTDAct.TabIndex = 0;
             this.FrameRTDAct.TabStop = false;
             this.FrameRTDAct.Text = "RTD Action";
+            // 
+            // buttonRTDErase
+            // 
+            this.buttonRTDErase.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonRTDErase.Location = new System.Drawing.Point(93, 86);
+            this.buttonRTDErase.Name = "buttonRTDErase";
+            this.buttonRTDErase.Size = new System.Drawing.Size(75, 23);
+            this.buttonRTDErase.TabIndex = 5;
+            this.buttonRTDErase.Text = "Erase";
+            this.buttonRTDErase.UseVisualStyleBackColor = true;
+            this.buttonRTDErase.Click += new System.EventHandler(this.buttonRTDErase_Click);
             // 
             // buttonRTDWrite
             // 
@@ -119,22 +132,18 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 137);
+            this.textBox1.Location = new System.Drawing.Point(12, 200);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(260, 113);
+            this.textBox1.Size = new System.Drawing.Size(260, 50);
             this.textBox1.TabIndex = 1;
             // 
-            // buttonRTDErase
+            // progressBarWrite
             // 
-            this.buttonRTDErase.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonRTDErase.Location = new System.Drawing.Point(93, 86);
-            this.buttonRTDErase.Name = "buttonRTDErase";
-            this.buttonRTDErase.Size = new System.Drawing.Size(75, 23);
-            this.buttonRTDErase.TabIndex = 5;
-            this.buttonRTDErase.Text = "Erase";
-            this.buttonRTDErase.UseVisualStyleBackColor = true;
-            this.buttonRTDErase.Click += new System.EventHandler(this.buttonRTDErase_Click);
+            this.progressBarWrite.Location = new System.Drawing.Point(8, 115);
+            this.progressBarWrite.Name = "progressBarWrite";
+            this.progressBarWrite.Size = new System.Drawing.Size(160, 23);
+            this.progressBarWrite.TabIndex = 11;
             // 
             // FormMain
             // 
@@ -144,6 +153,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.FrameRTDAct);
             this.Name = "FormMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.FrameRTDAct.ResumeLayout(false);
@@ -163,6 +173,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button buttonRTDWrite;
         private System.Windows.Forms.Button buttonRTDErase;
+        private System.Windows.Forms.ProgressBar progressBarWrite;
     }
 }
 

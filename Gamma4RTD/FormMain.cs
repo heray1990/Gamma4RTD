@@ -18,6 +18,11 @@ namespace Gamma4RTD
             InitializeComponent();
         }
 
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            comboBoxGamId.SelectedIndex = 0;
+        }
+
         private void buttonRTDInit_Click(object sender, EventArgs e)
         {
             if (Rtddll.RTD2758Init())
@@ -35,83 +40,44 @@ namespace Gamma4RTD
             Rtddll.RTD2758_Reset();
         }
 
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-            comboBoxGamId.SelectedIndex = 0;
-        }
-
         private void buttonRTDWrite_Click(object sender, EventArgs e)
         {
             new Thread(new ThreadStart(StartWriteGamma)).Start();
         }
+        private void buttonRTDErase_Click(object sender, EventArgs e)
+        {
+            Rtddll.DDCCI_EraseGamma((byte)comboBoxGamId.SelectedIndex);
+        }
 
-        public void StartWriteGamma()
+        private void StartWriteGamma()
         {
             bool isDone = false;
-            isDone = DccCiWriteGamma(2.2, 3.454, 5);
+            WriteGamma writeGamma = new WriteGamma();
+            writeGamma.onWriteProgress += new WriteGamma.dWriteProgress(WriteGamma_onWriteProgress);
+            isDone = writeGamma.Write();
             if (isDone)
             {
                 MessageBox.Show("True");
             }
+            else
+            {
+                MessageBox.Show("False");
+            }
         }
 
-        private bool DccCiWriteGamma(double gamma, double gammaMapping, byte gammaid)
+        private void WriteGamma_onWriteProgress(int total, int current)
         {
-            byte[] gammaArray = new byte[6156];
-            byte[] gammaArrayTmp = new byte[2052];
-            int[] inputArray = new int[1024];
-            double tmp = 0;
-            int i = 0;
-            bool result = false;
-
-            gammaArrayTmp[0] = 0x00;
-            gammaArrayTmp[1] = 0x00;
-            gammaArrayTmp[2050] = 0x00;
-            gammaArrayTmp[2051] = 0x00;
-
-            for (i = 1; i <= 1024; i++)
+            if (this.InvokeRequired)
             {
-                // 16383 = 0x3F
-                tmp = 16383 * Math.Pow(((double)i / 1024.0), (gamma / gammaMapping));
-                inputArray[i - 1] = (int)tmp;
+                this.Invoke(new WriteGamma.dWriteProgress(WriteGamma_onWriteProgress), new object[] { total, current });
             }
-
-            for (i = 2; i <= 2048; i = i + 2)
+            else
             {
-                gammaArrayTmp[i] = (byte)(inputArray[i / 2 - 1] / 256);
-                gammaArrayTmp[i + 1] = (byte)(inputArray[i / 2 - 1] % 256);
+                this.progressBarWrite.Maximum = total;
+                this.progressBarWrite.Value = current;
+                int value = (int)(((double)current / (double)total) * 100);
             }
-
-            for (i = 0; i < 6156; i++)
-            {
-                if (i <= 2051)
-                {
-                    gammaArray[i] = gammaArrayTmp[i];
-                }
-                else if (i >= 4104)
-                {
-                    gammaArray[i] = gammaArrayTmp[i - 4104];
-                }
-                else
-                {
-                    gammaArray[i] = gammaArrayTmp[i - 2052];
-                }
-            }
-
-            //for (i = 0; i < 6156; i++)
-            //{
-            //    textBox1.Text = textBox1.Text + gammaArray[i].ToString() + ", ";
-            //}
-
-            result = Rtddll.DDCCI_WriteGamma(ref gammaArray[0], gammaid);
-            Application.DoEvents();
-
-            return result;
         }
 
-        private void buttonRTDErase_Click(object sender, EventArgs e)
-        {
-            Rtddll.DDCCI_EraseGamma(4);
-        }
     }
 }
