@@ -28,5 +28,15 @@ namespace Gamma4RTD
                 MessageBox.Show("False");
             }
         }
+
+        private void buttonRTDRst_Click(object sender, EventArgs e)
+        {
+            Rtddll.RTD2758_Reset();
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            comboBoxGamId.SelectedIndex = 0;
+        }
     }
 }

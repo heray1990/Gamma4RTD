@@ -10,7 +10,7 @@ namespace Gamma4RTD
     internal class Rtddll
     {
         private Rtddll() {}
-
+        // For the detail of rtddll.dll, please check RtddllReadme.h.
         [DllImport("rtddll.dll")]
         public static extern bool RTD2758Init();
 
