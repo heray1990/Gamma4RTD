@@ -16,5 +16,17 @@ namespace Gamma4RTD
         {
             InitializeComponent();
         }
+
+        private void buttonRTDInit_Click(object sender, EventArgs e)
+        {
+            if (Rtddll.RTD2758Init())
+            {
+                MessageBox.Show("True");
+            }
+            else
+            {
+                MessageBox.Show("False");
+            }
+        }
     }
 }
