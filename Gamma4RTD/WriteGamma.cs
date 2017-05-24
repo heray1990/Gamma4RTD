@@ -23,20 +23,28 @@ namespace Gamma4RTD
                 switch (i)
                 {
                     case 0:
-                    case 7:
                         gammaVal = 3.73;
                         break;
                     case 1:
                         gammaVal = 2.2;
                         break;
                     case 2:
-                    case 4:
-                    case 5:
-                    case 6:
                         gammaVal = 2.4;
                         break;
                     case 3:
                         gammaVal = 2.6;
+                        break;
+                    case 4:
+                        gammaVal = 1;
+                        break;
+                    case 5:
+                        gammaVal = 0.5;
+                        break;
+                    case 6:
+                        gammaVal = 2.4;
+                        break;
+                    case 7:
+                        gammaVal = 4;
                         break;
                     default:
                         gammaVal = 2.2;
@@ -53,6 +61,8 @@ namespace Gamma4RTD
                 {
                     return false;
                 }
+
+                System.Threading.Thread.Sleep(100);
             }
 
             return true;

@@ -43,6 +43,7 @@ namespace Gamma4RTD
         private void buttonRTDWrite_Click(object sender, EventArgs e)
         {
             new Thread(new ThreadStart(StartWriteGamma)).Start();
+            buttonRTDInit.Enabled = false;
         }
         private void buttonRTDErase_Click(object sender, EventArgs e)
         {
@@ -63,6 +64,7 @@ namespace Gamma4RTD
             {
                 MessageBox.Show("False");
             }
+            buttonRTDInit.Enabled = true;
         }
 
         private void WriteGamma_onWriteProgress(int total, int current)
