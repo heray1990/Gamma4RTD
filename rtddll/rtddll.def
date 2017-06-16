@@ -1,0 +1,53 @@
+LIBRARY      "rtddll" 
+
+EXPORTS
+    fnRtddll @ 1
+
+    getvar @ 2
+
+    getfun_FT_Write @ 3
+
+    HighSpeedSetI2CStart @ 4
+
+    HighSpeedSetI2CStop @ 5
+
+    SendByteAndCheckACK @ 6
+
+    I2C_Write @ 7
+    I2C_WriteBlock @ 8
+    RTD2785_WriteByte @ 9
+    I2C_Read @ 10
+    RTD2785_ReadByte @ 11
+    
+    RTD2758Init @ 12
+    
+    RTD2758_Run @ 13
+    RTD2758_Stop @ 14
+    RTD2758_Reset @15
+    
+    Set_GammaEnable @ 16
+    Read_GammaTable @ 17
+    Read_GammaRGBTable @ 18
+    Write_GammaTable @ 19
+    Write_GammaRGBTable @ 20
+    
+    DDCCI_EraseGamma @ 21
+    DDCCI_WriteGamma @ 22
+    DDCCI_EnableGamma @ 23
+    DDCCI_SetGamma @ 24
+    DDCCI_ABA_Enable @ 25
+    DDCCI_ABA_SetValue @ 26
+    DDCCI_ABA_GetValue @ 27
+    
+    DDCCI_OSD_KEYEvent @ 28
+    
+    getDLLversion @ 29
+
+	DDCCI_EraseBacklight @ 30
+	DDCCI_WriteBacklight @ 31
+	DDCCI_ReadBacklight @ 32
+	DDCCI_GetBacklight @ 33
+	DDCCI_UseBacklight @ 34
+	
+
+    
